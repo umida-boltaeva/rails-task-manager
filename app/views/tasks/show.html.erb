@@ -1,17 +1,23 @@
+<div class="btn">
 <%= link_to "Edit the task", edit_task_path %>
+</div>
 
 <h2><%= @task.title %></h2>
 <p><%= @task.details %></p>
 <p>
 <% if @task.completed == true %>
+<%= check_box_tag :completed, true, true %>
 <%= "This task is completed" %>
 <% elsif %>
-<%= "This task is not completed yet" %>
+<%= check_box_tag :completed, false, false %>
+<%= "This task is not completed" %>
   <% end %>
 </p>
+<div class="btn">
 <%= link_to "Delete",
   task_path(@task),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%> <br>
+%>
 
 <%= link_to "Back to tasks", tasks_path(@task) %>
+</div>
